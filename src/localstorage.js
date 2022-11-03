@@ -33,7 +33,7 @@ export function addItem(key, data) {
      
   }
 
-  export function IncreaseValue(key, value){
+  export function CompletedTask(key, value){
    
     //  let data =  localStorage.getItem(key);
     //  let parseddata = data ? parseInt(value) : 0;

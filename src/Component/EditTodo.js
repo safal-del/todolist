@@ -7,6 +7,7 @@ const EditTodo = () => {
     const navigate = useNavigate();
     const initialState = useContext(contextApi);
     const index = initialState.editIndex;
+    console.log(index)
     const todolists = localStorage.getItem("todousers");
 
 

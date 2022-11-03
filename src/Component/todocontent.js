@@ -17,8 +17,7 @@ const Todocontent = () => {
   function NavigateToEdit(index) {
     IndexEditing(index);
     navigate("/edit");
-    window.location.reload()
-
+  
   }
   function DeleteAndCount(i,data){
     UserDelete(i);
@@ -41,11 +40,11 @@ const Todocontent = () => {
 
       let tododata = parsetodolist.map((items, i) => {
         return (
-          <div className=' h-44 w-96 bg-[#FAC585] rounded-lg mt-7 p-4 flex flex-col justify-between '>
+          <div className=' h-48 w-96 bg-[#FAC585] rounded-lg mt-7 p-4 flex flex-col justify-between break-words h-max '>
             <p>date:{items.date}</p>
             <h3 className='text-xl'>task:{items.todo}</h3>
             
-          <div className='mt-3 flex justify-around text-white'>
+          <div className='mt-3 flex justify-around text-white  '>
           <button className='rounded bg-red-500 p-1 hover:bg-red-700' onClick={() =>DeleteAndCount(i,1)}>delete</button>
             <button className='rounded bg-blue-500 p-1 hover:bg-green-600' onClick={() => NavigateToEdit(i)}>edit</button>
             <button onClick={()=>CompletedTaskCounteds(1)} className='rounded bg-gray-500 p-1'>done</button>
@@ -58,7 +57,7 @@ const Todocontent = () => {
 
     }
     else {
-      TaskCount(0);
+    
       
       return (<p className='text-3xl'>nothing added in todo</p>)
        

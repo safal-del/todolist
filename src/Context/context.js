@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { addItem, getItems, editItem ,deleteItem, IncreaseValue, TotalTask, RemainingTask, } from "../localstorage.js"
+import { addItem, getItems, editItem ,deleteItem, CompletedTask, TotalTask, RemainingTask, } from "../localstorage.js"
 
 
 
@@ -21,14 +21,27 @@ function loadInitialUsers() {
 }
 function RemainingTasks(){
   let totaltask = localStorage.getItem("totaltask");
-   let parseTotaltask= parseInt(totaltask);
-  let completedtask = localStorage.getItem("number");
-  let parseCompletedTask = parseInt(completedtask);
-  let value = parseTotaltask - parseCompletedTask
+   let parseTotaltask =  totaltask ?  totaltask:0 ;
+   
 
-  let numvalue = localStorage.getItem("remaining")
-   numvalue = numvalue? parseInt(numvalue) :0
-  RemainingTask("remaining",value);
+    parseTotaltask= parseInt(parseTotaltask);
+    console.log(parseTotaltask)
+    
+  let completedtask = localStorage.getItem("number");
+     let parseCompletedTask = completedtask ?completedtask:0
+   parseCompletedTask = parseInt(parseCompletedTask);
+   
+  let value = parseTotaltask - parseCompletedTask
+    
+    value = parseInt(value)
+
+  RemainingTask("remaining", value);
+
+  
+
+   
+   
+  
    
 
 
@@ -38,10 +51,10 @@ function RemainingTasks(){
 
 const StateContext = ({ children }) => {
   RemainingTasks();
-
   const [users, setUsers] = useState(loadInitialUsers());
- 
   const [editIndex, setIndex] = useState(0);
+
+
   function Adduser(data) {
     let users = addItem("todousers", data);
     setUsers(users)
@@ -69,6 +82,8 @@ const StateContext = ({ children }) => {
   
    TotalTask("totaltask",num-value);
    RemainingTask("remaining" , numvalue-1 )
+   CompletedTask("number",num-1);
+
 
 
   }
@@ -94,7 +109,7 @@ const StateContext = ({ children }) => {
       num = num ? parseInt(num) :0
      
     
-     IncreaseValue("number",value+num);
+     CompletedTask("number",value+num);
      
   }
   function TotalTasks(value){

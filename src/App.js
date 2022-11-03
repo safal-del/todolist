@@ -12,7 +12,7 @@ function App() {
   console.log(items);
   return (
     
-    <div className='bg-gray-200 h-[100vh]'>
+    <div className='h-[100vh]'>
 
        <div className='flex justify-center'>    
         <div className='   flex justify-center w-[80%]'>
