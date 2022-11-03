@@ -1,16 +1,15 @@
 import React, { useContext } from 'react'
-import { contextApi } from '../Context/context';
+
 import { useNavigate } from 'react-router-dom';
 import { RemainingTask, UpdatedStatus } from '../localstorage';
 import { deleteItem } from '../localstorage';
 
-const Todocontent = () => {
+const Todocontent = (props) => {
   const navigate = useNavigate();
-  const initialState = useContext(contextApi);
-  const IndexEditing = initialState.Editingindex;
   const todolists = localStorage.getItem("todousers");
   const remainings = localStorage.getItem("remaining")
   const parsetodolist = JSON.parse(todolists);
+  const func = props.func;
 
 
 
@@ -46,7 +45,7 @@ const Todocontent = () => {
 
   function NavigateToEdit(index) {
     
-    IndexEditing(index);
+    func(index)
     navigate("/edit");
   
   }
@@ -63,6 +62,7 @@ const Todocontent = () => {
     window.location.reload()
 
   }
+  
 
 
   function TodoLoad() {

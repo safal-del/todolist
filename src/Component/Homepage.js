@@ -2,7 +2,10 @@ import React from 'react'
 import Addtodo from './addtodo'
 import Todocontent from './todocontent'
 
-const Homepage = () => {
+const Homepage = (props) => {
+
+  const func = props.func
+  console.log(func);
  
     
   
@@ -15,7 +18,7 @@ const Homepage = () => {
         
         <Addtodo />
         <div className='mt-3'>
-        <Todocontent  />
+        <Todocontent  func={func}  />
         </div>
         
         

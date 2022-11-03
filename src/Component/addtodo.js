@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 
-import { useContext } from 'react'
-import { contextApi } from '../Context/context'
+
 import { addItem } from '../localstorage';
 
 const Addtodo = () => {
-    const initialState = useContext(contextApi);
-     const UserAdd = initialState.Adduser;
-     console.log(UserAdd);
+
+    
     const [todo, setTodo]= useState({
         todo:"",
         date:"",

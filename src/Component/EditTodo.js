@@ -1,13 +1,15 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useContext,useState } from 'react'
-import { contextApi } from '../Context/context'
+import { useState } from 'react'
+
 import { editItem } from '../localstorage'
 
-const EditTodo = (i) => {
+const EditTodo = (props) => {
+    console.log(props.index);
+    const index = props.index
     const navigate = useNavigate();
-    const initialState = useContext(contextApi);
-    const index = initialState.editIndex;
+   
+    
     console.log(index)
     const todolists = localStorage.getItem("todousers");
 
@@ -15,7 +17,7 @@ const EditTodo = (i) => {
   const parsetodolist = JSON.parse(todolists);
    const user = parsetodolist.at(index).todo
         
-    const DataEdit = initialState.EditUser
+   
     const [todo, setTodo]= useState({
         todo:"",
         date:""
