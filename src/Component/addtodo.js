@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
-import { addItem } from '../localstorage'
+
 import { useContext } from 'react'
 import { contextApi } from '../Context/context'
+import { addItem } from '../localstorage';
 
 const Addtodo = () => {
     const initialState = useContext(contextApi);
      const UserAdd = initialState.Adduser;
-     const AddTotalTask = initialState.TotalTasks;
      console.log(UserAdd);
     const [todo, setTodo]= useState({
         todo:"",
-        date:""
+        date:"",
+        status:null
     })
   const [inputState, setInputState]= useState(false)
 
@@ -23,22 +24,18 @@ const Addtodo = () => {
            let currentdate = date.getFullYear() +"/" +date.getMonth() +"/" +date.getHours() +"/" + date.getMinutes()
          setTodo({
             todo:e.target.value,
-            date:currentdate
+            date:currentdate,
+            status:false
          })
         
          
      }
-     function TotalTaskCount(){
-        AddTotalTask(1)
-
-    }
+     
 
     const handleTodoSubmit =(e)=>{
         e.preventDefault();
         if(todo.todo.length>0){
-            UserAdd(todo)
-             
-            TotalTaskCount();
+            addItem("todousers", todo)
              todo.todo = "";
              setInputState(false)
              window.location.reload();

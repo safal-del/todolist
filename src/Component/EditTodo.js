@@ -2,8 +2,9 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useContext,useState } from 'react'
 import { contextApi } from '../Context/context'
+import { editItem } from '../localstorage'
 
-const EditTodo = () => {
+const EditTodo = (i) => {
     const navigate = useNavigate();
     const initialState = useContext(contextApi);
     const index = initialState.editIndex;
@@ -38,7 +39,7 @@ const EditTodo = () => {
     const handleTodoSubmit =(e)=>{
         e.preventDefault();
         if(todo.todo.length>0){
-            DataEdit(index,todo)
+            editItem("todousers",index,todo)
             navigate("/");
             window.location.reload();
 
