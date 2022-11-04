@@ -25,8 +25,13 @@ const Todocontent = (props) => {
         let parseremaining = remaining ? parseInt(remaining) :0;
 
        window.location.reload();
+
        
-       RemainingTask("remaining",parseremaining+1);
+        RemainingTask("remaining",parseremaining+1);
+
+      
+       
+      
 
 
 
@@ -56,8 +61,12 @@ const Todocontent = (props) => {
     const remaining = localStorage.getItem("remaining");
        
     let parseremaining = remaining ? parseInt(remaining) :0;
+     if(parsetodolist.at(i).status===true && parseremaining>0){
+      RemainingTask("remaining",parseremaining-1);
+
+     }
     
-    RemainingTask("remaining",parseremaining-1)
+    
     
     window.location.reload()
 
@@ -102,7 +111,7 @@ const Todocontent = (props) => {
   return (
     <div>
       <h2>TotalTask:{TotalTask}</h2>
-      <h2>CompletedTask:{remainings}</h2>
+      <h2>CompletedTask:{remainings<0 ?0:remainings}</h2>
       {TodoLoad()}
       {/* <button onClick={()=>deleteItem("todousers", 0)} >delete</button> */}
     </div>
